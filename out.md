@@ -22,8 +22,8 @@ conjunction with a Python interpreter, starting from the source code form. Both
 the abstract syntax tree and the bytecode representation are somewhat unstable.
 Different versions of the Python interpreter may yield different abstract syntax
 trees and different bytecode representations of the same program. This book was
-generated using `Python 3.6.1 (default, Apr  4 2017, 09:40:21) 
-[GCC 4.2.1 Compatible Apple LLVM 8.1.0 (clang-802.0.38)]`.
+generated using `Python 3.6.3 (default, Oct  3 2017, 21:45:48) 
+[GCC 7.2.0]`.
 
 
 ## License
@@ -136,7 +136,7 @@ def describe_number(num):
     ]
     if 0 <= num <= 10:
         return words[num]
-    elif num >= -10:
+    elif 0 > num >= -10:
         return "minus " + words[-num]
     return str(num)
 
@@ -988,7 +988,7 @@ A return statement, returning the value of the name `words`, subscripted by the 
 
 The other ('else') branch of the `if` statement is as follows:
 
-An `if` statement, testing a comparison (using the 'greater than or equal to' operator) of the name `num` and the unary negation operator applied to a numeric constant with value 10. The body of the main branch is as follows:
+An `if` statement, testing a compound comparison, comparing a numeric constant with value 0 and the name `num` using the 'greater than' operator, and the name `num` and the unary negation operator applied to a numeric constant with value 10 using the 'greater than or equal to' operator. The body of the main branch is as follows:
 
 A return statement, returning the value of the addition (or concatenation) operator, with left hand side the literal string *'minus '*, and right hand side the name `words`, subscripted by the unary negation operator applied to the name `num`.
 
@@ -2650,7 +2650,7 @@ The computer loads a reference to the local variable named `txt` and places it o
 
 The computer places the literal string *'zero'* on top of the stack. The computer places the literal string *'one'* on top of the stack. The computer places the literal string *'two'* on top of the stack. The computer places the literal string *'three'* on top of the stack. The computer places the literal string *'four'* on top of the stack. The computer places the literal string *'five'* on top of the stack. The computer places the literal string *'six'* on top of the stack. The computer places the literal string *'seven'* on top of the stack. The computer places the literal string *'eight'* on top of the stack. 
 
-The computer places the literal string *'nine'* on top of the stack. The computer places the literal string *'ten'* on top of the stack. The computer takes the top minus zero values from the stack, puts them in a list, and places it on top of the stack. The computer takes the top value from the stack and stores it in the local variable named `words`. 
+The computer places the literal string *'nine'* on top of the stack. The computer places the literal string *'ten'* on top of the stack. The computer takes the top 11 values from the stack, puts them in a list, and places it on top of the stack. The computer takes the top value from the stack and stores it in the local variable named `words`. 
 
 The computer places the integer constant zero on top of the stack. The computer loads a reference to the local variable named `num` and places it on top of the stack. The computer duplicates the top value on the stack, placing the new copy on top of the stack. The computer takes the top three values from the stack, rotates them so that the top value is now on the bottom, and replaces them on top of the stack. The computer takes the top two values from the stack and compares them using the operator `<=`, placing the result on top of the stack. The computer looks at the top value on the stack. If it is false-like (e.g. False, None or zero), it jumps to offset {}. Otherwise it removes the top value from the stack. The computer places the integer constant ten on top of the stack. The computer takes the top two values from the stack and compares them using the operator `<=`, placing the result on top of the stack. The computer jumps forward to offset 48. 
 
@@ -2668,13 +2668,21 @@ The computer loads a reference to the local variable named `words` and places it
 
 ### Offset 58
 
-The computer loads a reference to the local variable named `num` and places it on top of the stack. The computer places the integer constant minus ten on top of the stack. The computer takes the top two values from the stack and compares them using the operator `>=`, placing the result on top of the stack. The computer takes the top value from the stack, and if it is false-like (e.g. False, None or zero), jumps to offset 80. 
+The computer places the integer constant zero on top of the stack. The computer loads a reference to the local variable named `num` and places it on top of the stack. The computer duplicates the top value on the stack, placing the new copy on top of the stack. The computer takes the top three values from the stack, rotates them so that the top value is now on the bottom, and replaces them on top of the stack. The computer takes the top two values from the stack and compares them using the operator `>`, placing the result on top of the stack. The computer looks at the top value on the stack. If it is false-like (e.g. False, None or zero), it jumps to offset {}. Otherwise it removes the top value from the stack. The computer places the integer constant minus ten on top of the stack. The computer takes the top two values from the stack and compares them using the operator `>=`, placing the result on top of the stack. The computer jumps forward to offset 80. 
+
+### Offset 76
+
+The computer takes the top two values from the stack, swaps them, and replaces them on top of the stack. The computer discards the top value from the stack. 
+
+### Offset 80
+
+The computer takes the top value from the stack, and if it is false-like (e.g. False, None or zero), jumps to offset 96. 
 
 The computer places the literal string *'minus '* on top of the stack. The computer loads a reference to the local variable named `words` and places it on top of the stack. The computer loads a reference to the local variable named `num` and places it on top of the stack. The computer takes the top value from the stack, negates it, and places the result on top of the stack. The computer takes the top two values from the stack and retrieves the value of the second item, subscripted by the value of the first item. The computer takes the top two values from the stack, adds them together, and places the result on top of the stack. The computer exits the current function, returning the top value on the stack. 
 
 
 
-### Offset 80
+### Offset 96
 
 The computer loads a reference to the global variable named `str` and places it on top of the stack. The computer loads a reference to the local variable named `num` and places it on top of the stack. The computer takes the top value from the stack, along with another value which it calls as a function, using the original value as an argument, placing the return value on the stack. The computer exits the current function, returning the top value on the stack. 
 

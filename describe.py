@@ -79,7 +79,7 @@ def describe_number(num):
     ]
     if 0 <= num <= 10:
         return words[num]
-    elif num >= -10:
+    elif 0 > num >= -10:
         return "minus " + words[-num]
     return str(num)
 
